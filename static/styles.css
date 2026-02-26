@@ -158,22 +158,121 @@ body{
   transition: background .15s ease, color .15s ease;
 }
 
-.nav-links a:hover{
+/* Remove outer padding for language swap links (padding lives on .swap-inner) */
+.nav-links a.nav-swap{
+  padding: 0 !important;
+}
+
+/* Keep color change on hover, but don't paint background here (nav-swap handles it) */
+.nav-links a:not(.nav-cta):hover {
   color: var(--text);
-  background: rgba(37,99,235,0.08);
+  background: none;
 }
 
 .nav-cta{
   display:inline-flex;
   align-items:center;
   gap: 0.5rem;
-  padding: 0.55rem 0.9rem;
-  border-radius: 14px;
+  padding: 0.86rem 1.45rem;
+  border-radius: 18px;
+    font-size: 1rem;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   color: #fff !important;
   box-shadow: 0 14px 34px rgba(37,99,235,0.22);
 }
 .nav-cta:hover{ filter: brightness(1.05); }
+
+/* ================================
+   Stable Language Hover Swap
+   (no layout shift, no top-left jump)
+   Requires HTML structure:
+   <a class="nav-swap"><span class="swap-inner"><span class="en">...</span><span class="ga">...</span></span></a>
+   ================================ */
+
+.nav-swap{
+  padding: 0 !important;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Anchor for absolute positioning + pill sizing */
+.nav-swap .swap-inner{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.45rem 0.95rem;
+  border-radius: 12px;
+  line-height: 1;
+}
+
+/* Hover pill for normal nav items */
+.nav-swap:hover .swap-inner{
+  background: rgba(37, 99, 235, 0.08);
+}
+
+/* Both languages consistent */
+.nav-swap .en,
+.nav-swap .ga{
+  display: inline-block;
+  white-space: nowrap;
+  transition: opacity 0.15s ease;
+  line-height: 1;
+}
+
+/* Overlay Irish text and center it */
+.nav-swap .ga{
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Fade swap */
+.nav-swap:hover .en{ opacity: 0; }
+.nav-swap:hover .ga{ opacity: 1; }
+
+/* ================================
+   CTA (Contact) swap rules
+   Keep gradient as the ONLY background
+   ================================ */
+
+.nav-cta.nav-swap{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+    position: relative;
+}
+
+/* Remove inner pill padding/background for CTA */
+.nav-cta.nav-swap .swap-inner{
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Prevent the normal hover-pill from showing inside CTA */
+.nav-cta.nav-swap:hover{
+    filter: brightness(1.06);
+    box-shadow: 0 18px 44px rgba(37,99,235,0.28); /*stronger glow */
+    transform: translateY(-1px);
+    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+/* Ensure readable white text on gradient */
+.nav-cta.nav-swap .en,
+.nav-cta.nav-swap .ga{
+  color: #fff;
+  font-weight: 900;
+}
 
 /* Buttons */
 .btn{
