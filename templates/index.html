@@ -4,366 +4,456 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QEEEXPK15K"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-QEEEXPK15K');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-QEEEXPK15K');
     </script>
 
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Michael McCallion | Portfolio</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Michael McCallion | Portfolio</title>
 
-  <!-- Load external CSS from /static -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Load external CSS from /static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
 <div class="bg-aurora"></div>
 <div class="bg-grain"></div>
-  <!-- NAV -->
-  <header class="nav">
+<!-- NAV -->
+<header class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="#top"><span class="brand-dot"></span>Michael McCallion</a>
-      <nav class="nav-links">
-        <a href="#projects" class="nav-swap">
+        <a class="brand" href="#top"><span class="brand-dot"></span>Michael McCallion</a>
+        <nav class="nav-links">
+            <a href="#projects" class="nav-swap">
             <span class="swap-inner">
                 <span class="en">Projects</span>
                 <span class="ga">Tionscadail</span>
             </span>
-        </a>
-        <a href="#about" class="nav-swap">
+            </a>
+            <a href="#about" class="nav-swap">
             <span class="swap-inner">
                 <span class="en">About Me</span>
                 <span class="ga">Fúm</span>
             </span>
-        </a>
-        <a class="nav-cta nav-swap" href="contact">
+            </a>
+            <a class="nav-cta nav-swap" href="#contact">
             <span class="swap-inner">
                 <span class="en">Contact</span>
                 <span class="ga">Teagmháil</span>
             </span>
-        </a>
-      </nav>
+            </a>
+        </nav>
     </div>
-  </header>
+</header>
 
-  <!-- HERO / INTRO -->
-  <main id="top">
+<!-- HERO / INTRO -->
+<main id="top">
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <h1>Software Engineer<br/>with an AI & Data focus.</h1>
-          <p>
-            I’m Michael McCallion — a Software Engineer and MSc Artificial Intelligence graduate.
-            I build machine learning pipelines, data-driven applications, and clean full-stack projects.
-          </p>
+        <div class="container hero-grid">
+            <div>
+                <h1>Software Engineer<br/>with an AI & Data focus.</h1>
+                <p>
+                    I’m Michael McCallion — a Software Engineer and MSc Artificial Intelligence graduate.
+                    I build machine learning pipelines, data-driven applications, and clean full-stack projects.
+                </p>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">See Projects</a>
-            <a class="btn" href="#contact">Get in Touch</a>
-          </div>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#projects">See Projects</a>
+                    <a class="btn" href="#contact">Get in Touch</a>
+                </div>
+            </div>
+
+            <aside class="hero-card glass">
+                <div class="pill">Quick Snapshot</div>
+                <ul>
+                    <li><span>Current:</span> Software Engineer looking for work!</li>
+                    <li><span>Education:</span> MSc Artificial Intelligence (Distinction)</li>
+                    <li><span>Location:</span> Sydney, NSW</li>
+                    <li><span>Interests:</span> ML, data, full-stack</li>
+                </ul>
+            </aside>
         </div>
-
-        <aside class="hero-card glass">
-          <div class="pill">Quick Snapshot</div>
-          <ul>
-            <li><span>Current:</span> Software Engineer looking for work!</li>
-            <li><span>Education:</span> MSc Artificial Intelligence (Distinction)</li>
-            <li><span>Location:</span> Sydney, NSW</li>
-            <li><span>Interests:</span> ML, data, full-stack</li>
-          </ul>
-        </aside>
-      </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects" class="section">
-      <div class="container">
-        <h2 class="section-title">Dissertation Project</h2>
-        <p class="section-subtitle">
-          My MSc research investigated whether human “breathprints” can act as a reliable biometric identifier,
-          using machine learning on volatile organic compound (VOC) breath data.
-        </p>
-
-        <article class="proj-feature glass">
-          <h3>Human Breathprints as Biometric Identifiers: Assessing Uniqueness and Reliability</h3>
-
-          <div class="proj-meta">
-            <span class="pill">MSc Artificial Intelligence</span>
-            <span class="pill">Machine Learning</span>
-            <span class="pill">VOCs / Breath Analysis</span>
-            <span class="pill">Feature Selection + Classification</span>
-          </div>
-
-          <p class="proj-lead">
-            Traditional biometrics (fingerprint, face, iris) are effective but can be intrusive or inconvenient in some
-            healthcare contexts. This project explores breath as a non-invasive biometric: you simply exhale into a sensor,
-            producing a VOC “signature” that may be distinctive enough to identify an individual within a group.
-          </p>
-
-          <div class="two-col">
-            <div class="mini-card glass">
-              <h4>Research question</h4>
-              <p>
-                <strong>Can VOC patterns in exhaled breath uniquely and reliably identify an individual</strong>
-                (i.e., act like a fingerprint), despite natural variability caused by factors like diet, health,
-                environment, and time?
-              </p>
-
-              <ul class="bullets">
-                <li>Assess uniqueness via patterns across individuals</li>
-                <li>Reduce high-dimensional VOC data into informative components</li>
-                <li>Prevent overfitting given limited samples</li>
-                <li>Evaluate classification performance using standard metrics</li>
-              </ul>
-            </div>
-
-            <div class="mini-card">
-              <h4>Dataset & constraints</h4>
-              <p>
-                The dataset contains breath samples from <strong>11 subjects</strong> collected across multiple days.
-                VOCs were measured using mass spectrometry methods (SESI-MS / Q-TOF in the source study).
-              </p>
-
-              <ul class="bullets">
-                <li><strong>High dimensionality:</strong> many VOC features</li>
-                <li><strong>Small sample size:</strong> risk of overfitting</li>
-                <li><strong>Variability:</strong> VOCs fluctuate over time</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="two-col" style="margin-top: 1rem;">
-            <div class="mini-card">
-              <h4>Pipeline (Iteration 1)</h4>
-              <p><strong>Goal:</strong> reduce dimensionality early, then select features.</p>
-              <ul class="bullets">
-                <li>StandardScaler (normalise feature scales)</li>
-                <li>PCA (retain most variance, reduce dimensions)</li>
-                <li>LDA (supervised separation between subjects)</li>
-                <li>Regression-based feature selection: Lasso / Ridge / ElasticNet</li>
-                <li>Classifiers: Logistic Regression, SVM, Random Forest</li>
-              </ul>
-            </div>
-
-            <div class="mini-card">
-              <h4>Pipeline (Iteration 2)</h4>
-              <p><strong>Goal:</strong> test whether ordering matters (feature selection first).</p>
-              <ul class="bullets">
-                <li>StandardScaler</li>
-                <li>Regression feature selection first (Lasso / Ridge / ElasticNet)</li>
-                <li>LDA after selection (maximise class separability)</li>
-                <li>Same classifiers: Logistic Regression, SVM, Random Forest</li>
-              </ul>
-            </div>
-          </div>
-
-          <div style="margin-top: 1.25rem;">
-            <h4 style="font-size:1.05rem;margin-bottom:0.35rem;">Key finding: ordering matters</h4>
-            <p class="proj-lead" style="margin-bottom:0.75rem;">
-              The core insight from this work is that <strong>changing the sequence</strong> of dimensionality reduction
-              and feature selection can significantly affect classification outcomes. In my experiments, the second
-              iteration (feature selection → LDA) produced a major improvement in Logistic Regression performance.
+        <div class="container">
+            <h2 class="section-title">Dissertation Project</h2>
+            <p class="section-subtitle">
+                My MSc research investigated whether human “breathprints” can act as a reliable biometric identifier,
+                using machine learning on volatile organic compound (VOC) breath data.
             </p>
 
-            <div class="two-col">
-              <div class="mini-card">
-                <h4>Iteration 1 — Classification metrics</h4>
-                <table class="results-table">
-                  <thead>
-                    <tr>
-                      <th>Model</th>
-                      <th>Accuracy</th>
-                      <th>Precision</th>
-                      <th>Recall</th>
-                      <th>F1</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Logistic Regression</td>
-                      <td>25.64%</td>
-                      <td>28.61%</td>
-                      <td>25.64%</td>
-                      <td>24.46%</td>
-                    </tr>
-                    <tr>
-                      <td>SVM</td>
-                      <td>30.77%</td>
-                      <td>40.72%</td>
-                      <td>30.77%</td>
-                      <td>33.03%</td>
-                    </tr>
-                    <tr>
-                      <td>Random Forest</td>
-                      <td>33.33%</td>
-                      <td>32.46%</td>
-                      <td>33.33%</td>
-                      <td>32.01%</td>
-                    </tr>
-                  </tbody>
-                </table>
+            <article class="proj-feature glass">
+                <h3>Human Breathprints as Biometric Identifiers: Assessing Uniqueness and Reliability</h3>
 
-                <p class="note">
-                  Interpretation: performance is modest overall; the best accuracy here is Random Forest (~33%),
-                  suggesting the problem is hard under this pipeline and/or the dataset is challenging (small + variable).
+                <div class="proj-meta">
+                    <span class="pill">MSc Artificial Intelligence</span>
+                    <span class="pill">Machine Learning</span>
+                    <span class="pill">VOCs / Breath Analysis</span>
+                    <span class="pill">Feature Selection + Classification</span>
+                </div>
+
+                <p class="proj-lead">
+                    Traditional biometrics (fingerprint, face, iris) are effective but can be intrusive or inconvenient
+                    in some
+                    healthcare contexts. This project explores breath as a non-invasive biometric: you simply exhale
+                    into a sensor,
+                    producing a VOC “signature” that may be distinctive enough to identify an individual within a group.
                 </p>
-              </div>
 
-              <div class="mini-card">
-                <h4>Iteration 2 — Classification metrics</h4>
-                <table class="results-table">
-                  <thead>
-                    <tr>
-                      <th>Model</th>
-                      <th>Accuracy</th>
-                      <th>Precision</th>
-                      <th>Recall</th>
-                      <th>F1</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Logistic Regression</td>
-                      <td><strong>56.41%</strong></td>
-                      <td>65.81%</td>
-                      <td>56.41%</td>
-                      <td>55.99%</td>
-                    </tr>
-                    <tr>
-                      <td>SVM</td>
-                      <td>41.03%</td>
-                      <td>61.05%</td>
-                      <td>41.03%</td>
-                      <td>44.74%</td>
-                    </tr>
-                    <tr>
-                      <td>Random Forest</td>
-                      <td>38.46%</td>
-                      <td>32.46%</td>
-                      <td>33.33%</td>
-                      <td>32.01%</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="two-col">
+                    <div class="mini-card glass">
+                        <h4>Research question</h4>
+                        <p>
+                            <strong>Can VOC patterns in exhaled breath uniquely and reliably identify an
+                                individual</strong>
+                            (i.e., act like a fingerprint), despite natural variability caused by factors like diet,
+                            health,
+                            environment, and time?
+                        </p>
 
-                <p class="note">
-                  Interpretation: Logistic Regression improves dramatically under the revised ordering,
-                  indicating that the “shape” of the feature space created by the pipeline can be more important
-                  than the classifier choice alone.
+                        <ul class="bullets">
+                            <li>Assess uniqueness via patterns across individuals</li>
+                            <li>Reduce high-dimensional VOC data into informative components</li>
+                            <li>Prevent overfitting given limited samples</li>
+                            <li>Evaluate classification performance using standard metrics</li>
+                        </ul>
+                    </div>
+
+                    <div class="mini-card">
+                        <h4>Dataset & constraints</h4>
+                        <p>
+                            The dataset contains breath samples from <strong>11 subjects</strong> collected across
+                            multiple days.
+                            VOCs were measured using mass spectrometry methods (SESI-MS / Q-TOF in the source study).
+                        </p>
+
+                        <ul class="bullets">
+                            <li><strong>High dimensionality:</strong> many VOC features</li>
+                            <li><strong>Small sample size:</strong> risk of overfitting</li>
+                            <li><strong>Variability:</strong> VOCs fluctuate over time</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="two-col" style="margin-top: 1rem;">
+                    <div class="mini-card">
+                        <h4>Pipeline (Iteration 1)</h4>
+                        <p><strong>Goal:</strong> reduce dimensionality early, then select features.</p>
+                        <ul class="bullets">
+                            <li>StandardScaler (normalise feature scales)</li>
+                            <li>PCA (retain most variance, reduce dimensions)</li>
+                            <li>LDA (supervised separation between subjects)</li>
+                            <li>Regression-based feature selection: Lasso / Ridge / ElasticNet</li>
+                            <li>Classifiers: Logistic Regression, SVM, Random Forest</li>
+                        </ul>
+                    </div>
+
+                    <div class="mini-card">
+                        <h4>Pipeline (Iteration 2)</h4>
+                        <p><strong>Goal:</strong> test whether ordering matters (feature selection first).</p>
+                        <ul class="bullets">
+                            <li>StandardScaler</li>
+                            <li>Regression feature selection first (Lasso / Ridge / ElasticNet)</li>
+                            <li>LDA after selection (maximise class separability)</li>
+                            <li>Same classifiers: Logistic Regression, SVM, Random Forest</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.25rem;">
+                    <h4 style="font-size:1.05rem;margin-bottom:0.35rem;">Key finding: ordering matters</h4>
+                    <p class="proj-lead" style="margin-bottom:0.75rem;">
+                        The core insight from this work is that <strong>changing the sequence</strong> of dimensionality
+                        reduction
+                        and feature selection can significantly affect classification outcomes. In my experiments, the
+                        second
+                        iteration (feature selection → LDA) produced a major improvement in Logistic Regression
+                        performance.
+                    </p>
+
+                    <div class="two-col">
+                        <div class="mini-card">
+                            <h4>Iteration 1 — Classification metrics</h4>
+                            <table class="results-table">
+                                <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th>Accuracy</th>
+                                    <th>Precision</th>
+                                    <th>Recall</th>
+                                    <th>F1</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Logistic Regression</td>
+                                    <td>25.64%</td>
+                                    <td>28.61%</td>
+                                    <td>25.64%</td>
+                                    <td>24.46%</td>
+                                </tr>
+                                <tr>
+                                    <td>SVM</td>
+                                    <td>30.77%</td>
+                                    <td>40.72%</td>
+                                    <td>30.77%</td>
+                                    <td>33.03%</td>
+                                </tr>
+                                <tr>
+                                    <td>Random Forest</td>
+                                    <td>33.33%</td>
+                                    <td>32.46%</td>
+                                    <td>33.33%</td>
+                                    <td>32.01%</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <p class="note">
+                                Interpretation: performance is modest overall; the best accuracy here is Random Forest
+                                (~33%),
+                                suggesting the problem is hard under this pipeline and/or the dataset is challenging
+                                (small + variable).
+                            </p>
+                        </div>
+
+                        <div class="mini-card">
+                            <h4>Iteration 2 — Classification metrics</h4>
+                            <table class="results-table">
+                                <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th>Accuracy</th>
+                                    <th>Precision</th>
+                                    <th>Recall</th>
+                                    <th>F1</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Logistic Regression</td>
+                                    <td><strong>56.41%</strong></td>
+                                    <td>65.81%</td>
+                                    <td>56.41%</td>
+                                    <td>55.99%</td>
+                                </tr>
+                                <tr>
+                                    <td>SVM</td>
+                                    <td>41.03%</td>
+                                    <td>61.05%</td>
+                                    <td>41.03%</td>
+                                    <td>44.74%</td>
+                                </tr>
+                                <tr>
+                                    <td>Random Forest</td>
+                                    <td>38.46%</td>
+                                    <td>32.46%</td>
+                                    <td>33.33%</td>
+                                    <td>32.01%</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <p class="note">
+                                Interpretation: Logistic Regression improves dramatically under the revised ordering,
+                                indicating that the “shape” of the feature space created by the pipeline can be more
+                                important
+                                than the classifier choice alone.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="two-col" style="margin-top: 1.25rem;">
+                    <div class="mini-card">
+                        <h4>What the results suggest</h4>
+                        <ul class="bullets">
+                            <li><strong>Promise:</strong> Breathprints can contain identifying information, but
+                                performance depends heavily on processing choices.
+                            </li>
+                            <li><strong>Hard problem:</strong> High-dimensional signals + temporal variability make
+                                classification non-trivial.
+                            </li>
+                            <li><strong>Representation matters:</strong> Better feature space can unlock stronger
+                                results even with simpler models.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mini-card">
+                        <h4>Limitations & future work</h4>
+                        <ul class="bullets">
+                            <li><strong>Scale:</strong> Larger labelled datasets to improve generalisation</li>
+                            <li><strong>Stability:</strong> Evaluate repeatability across longer time windows</li>
+                            <li><strong>Methods:</strong> Explore non-linear reduction and stronger ensembles</li>
+                            <li><strong>Validation:</strong> Test on unseen cohorts / external datasets</li>
+                        </ul>
+
+                        <p class="note">
+                            Next steps would focus on improving robustness and validation to move from “promising” to
+                            “reliable in practice”.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="link-row">
+                    <a class="btn btn-primary"
+                       href="{{ url_for('static', filename='michael_mccallion_dissertation.pdf') }}"
+                       target="_blank" rel="noopener">
+                        Read the dissertation (PDF)
+                    </a>
+
+                    <a class="btn"
+                       href="{{ url_for('static', filename='mccallion-m15_dissertation.pdf') }}"
+                       download="michael_mccallion_dissertation.pdf">
+                        Download PDF
+                    </a>
+                </div>
+            </article>
+
+            <!-- NEW: Separate project (Q-Learning) -->
+            <h2 class="section-title" style="margin-top: 2.5rem;">Other Projects</h2>
+            <p class="section-subtitle">
+                A few additional projects from my MSc modules, focused on practical machine learning and interactive
+                demos.
+            </p>
+
+            <article class="proj-feature glass">
+                <h3>Reinforcement Learning: Q-Learning Gridworld Agent</h3>
+
+                <div class="proj-meta">
+                    <span class="pill">Deep Learning Module</span>
+                    <span class="pill">Reinforcement Learning</span>
+                    <span class="pill">Q-Learning</span>
+                    <span class="pill">Epsilon-Greedy</span>
+                </div>
+
+                <p class="proj-lead">
+                    Built a model-free reinforcement learning agent that learns an optimal policy in a 5×5 gridworld
+                    with obstacles.
+                    The agent improves over episodes by balancing exploration vs exploitation using an epsilon-greedy
+                    strategy.
                 </p>
-              </div>
-            </div>
-          </div>
 
-          <div class="two-col" style="margin-top: 1.25rem;">
-            <div class="mini-card">
-              <h4>What the results suggest</h4>
-              <ul class="bullets">
-                <li><strong>Promise:</strong> Breathprints can contain identifying information, but performance depends heavily on processing choices.</li>
-                <li><strong>Hard problem:</strong> High-dimensional signals + temporal variability make classification non-trivial.</li>
-                <li><strong>Representation matters:</strong> Better feature space can unlock stronger results even with simpler models.</li>
-              </ul>
-            </div>
+                <div class="two-col">
+                    <div class="mini-card glass">
+                        <h4>What it demonstrates</h4>
+                        <ul class="bullets">
+                            <li>Discrete state/action RL with a Q-table</li>
+                            <li>Reward shaping (goal reward + step penalty)</li>
+                            <li>Learning progression visible through shorter paths</li>
+                        </ul>
+                    </div>
 
-            <div class="mini-card">
-              <h4>Limitations & future work</h4>
-              <ul class="bullets">
-                <li><strong>Scale:</strong> Larger labelled datasets to improve generalisation</li>
-                <li><strong>Stability:</strong> Evaluate repeatability across longer time windows</li>
-                <li><strong>Methods:</strong> Explore non-linear reduction and stronger ensembles</li>
-                <li><strong>Validation:</strong> Test on unseen cohorts / external datasets</li>
-              </ul>
+                    <div class="mini-card">
+                        <h4>Try it live</h4>
+                        <p>
+                            This is an interactive demo — you can train the agent and watch it navigate the grid.
+                        </p>
+                        <div class="link-row" style="margin-top: 0.75rem;">
+                            <a class="btn btn-primary" href="/projects/qlearning">
+                                Interactive RL Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-              <p class="note">
-                Next steps would focus on improving robustness and validation to move from “promising” to “reliable in practice”.
-              </p>
-            </div>
-          </div>
-
-          <div class="link-row">
-            <a class="btn btn-primary"
-               href="{{ url_for('static', filename='michael_mccallion_dissertation.pdf') }}"
-               target="_blank" rel="noopener">
-              Read the dissertation (PDF)
-            </a>
-
-            <a class="btn"
-               href="{{ url_for('static', filename='mccallion-m15_dissertation.pdf') }}"
-               download="michael_mccallion_dissertation.pdf">
-              Download PDF
-            </a>
-          </div>
-        </article>
-      </div>
+        </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="section section--alt">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <p class="section-subtitle">
-          A short professional summary — keep it tight, outcome-driven, and easy to scan.
-        </p>
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
 
-        <div class="about-box glass">
-          <div>
-            <p>
-              I’m a Software Engineer with experience building reliability-critical systems in regulated environments.
-              My MSc research focused on applied machine learning, feature engineering, and model evaluation.
-              I enjoy shipping practical tools that turn data into real decisions.
+            <p class="section-subtitle">
+                Software Engineer with industry experience and an MSc in Artificial Intelligence (Distinction).
             </p>
-            <p style="margin-top: 1rem;">
-              Outside of coding: I’m into the outdoors and fishing, and I’m always building small side projects.
-            </p>
-          </div>
 
-          <ul class="about-list">
-            <li>✅ C# / SQL / Python</li>
-            <li>✅ ML: PCA / LDA / ElasticNet / SVM / Random Forest</li>
-            <li>✅ Building clean, maintainable systems</li>
-            <li>✅ Comfortable owning features end-to-end</li>
-          </ul>
+            <div class="about-box glass">
+                <div>
+                    <p>
+                        I’m a Software Engineer with experience building and supporting reliability-critical software in
+                        a regulated
+                        manufacturing environment at Abbott Diabetes Care. I worked mainly across <strong>C#</strong>
+                        and <strong>SQL</strong>,
+                        developing internal applications used on the factory floor, troubleshooting production issues,
+                        and improving system
+                        reliability through clean, maintainable code.
+                    </p>
+
+                    <p style="margin-top: 1rem;">
+                        I recently completed an <strong>MSc in Artificial Intelligence (Distinction)</strong>, where I
+                        focused on applied machine
+                        learning and evaluation. My dissertation explored whether human “breathprints” can be used as a
+                        non-invasive biometric
+                        identifier using VOC data. I enjoy building practical projects that combine strong engineering
+                        with ML and data.
+                    </p>
+
+                    <p style="margin-top: 1rem;">
+                        Outside of coding: I’m into fishing and the outdoors, and I’m always building small projects to
+                        learn and stay sharp.
+                    </p>
+                </div>
+
+                <ul class="about-list">
+                    <li>✅ Software Engineering: C# / SQL / Python</li>
+                    <li>✅ AI/ML: feature engineering, model evaluation, classification</li>
+                    <li>✅ Building and deploying full-stack projects (Flask + web UI)</li>
+                    <li>✅ Comfortable owning work end-to-end: build → test → deploy</li>
+                </ul>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-subtitle">
-          If you want to chat about roles, projects, or collaborations — fire me a message.
-        </p>
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">
+                If you want to chat about roles, projects, or collaborations — fire me a message.
+            </p>
 
-        <div class="contact-grid">
-          <div class="contact-card glass">
-            <h3 style="font-size:1.1rem;">Get in touch</h3>
-            <p>The best way to reach me is via email - I typically reply within a day. I'm always happy to chat about roles, projects, or collaborations!</p>
-            <a class="btn btn-primary" href="mailto:michaelgermccallion@gmail.com">Email Me</a>
-          </div>
+            <div class="contact-grid">
+                <div class="contact-card glass">
+                    <h3 style="font-size:1.1rem;">Get in touch</h3>
+                    <p>The best way to reach me is via email - I typically reply within a day. I'm always happy to chat
+                        about roles, projects, or collaborations!</p>
+                    <a class="btn btn-primary" href="mailto:michaelgermccallion@gmail.com">Email Me</a>
+                </div>
 
-          <div class="contact-card">
-            <h3 style="font-size:1.1rem;">Links</h3>
-            <div class="contact-links">
-              <a href="https://github.com/michaelmickmikey" target="_blank" rel="noopener">GitHub →</a>
-              <a href="https://www.linkedin.com/in/mickmccallion/" target="_blank" rel="noopener">LinkedIn →</a>
-              <a href="{{ url_for('static', filename='michael_mccallion_cv.pdf') }}" target="_blank" rel="noopener">
-                CV / Resume (PDF) →
-              </a>
+                <div class="contact-card">
+                    <h3 style="font-size:1.1rem;">Links</h3>
+                    <div class="contact-links">
+                        <a href="https://github.com/michaelmickmikey" target="_blank" rel="noopener">GitHub →</a>
+                        <a href="https://www.linkedin.com/in/mickmccallion/" target="_blank" rel="noopener">LinkedIn
+                            →</a>
+                        <a href="{{ url_for('static', filename='michael_mccallion_cv.pdf') }}" target="_blank"
+                           rel="noopener">
+                            CV / Resume (PDF) →
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <footer>
-      <div class="container">
-        © 2026 SNALL
-      </div>
+        <div class="container">
+            © 2026 SNALL
+        </div>
     </footer>
-  </main>
+</main>
 </body>
 </html>
