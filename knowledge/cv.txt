@@ -1,0 +1,92 @@
+Michael McCallion
+Sydney, NSW
+Mobile: +61 431 574 714
+Email: michaelgermccallion@gmail.com
+Personal Profile
+I am a motivated and detail-oriented software engineer with hands-on experience developing production-level C#
+code for Abbott’s FreeStyle Libre 2, 2+, 3, and 3+ products, contributing to systems that support the large-scale
+production of glucose monitoring sensors. Alongside this industry experience, I hold an MSc in Artificial Intelligence
+from Ulster University, where I developed a deep expertise in machine learning, data science and intelligent systems
+development. My MSc research explored the potential of the human ‘breathprint’ as a novel biometric identification
+method, implementing advanced feature selection and classification models to evaluate its uniqueness and accuracy.
+This academic foundation, combined with professional experience in C# software development, has provided me with
+a strong balance of AI expertise and practical engineering capability. I am passionate about leveraging my skills in AI,
+automation and scalable software systems to drive innovation and efficiency within technology-focused environments.
+Education
+2023-2024 Ulster University Belfast MSc Artificial Intelligence – Final Classification: Distinction
+2019-2023 Queen’s University Belfast BSc Computing and Information Technology (including Professional Experience) – Final
+Classification: 2:1
+Professional Experience
+Software Engineer - Abbott Diabetes Care (Donegal, Ireland | November 2024 - January 2026)
+● Develop and maintain C# and SQL applications used in the production of FreeStyle Libre 2, 2+, 3 and 3+ sensors,
+supporting the automation and reliability of large-scale manufacturing processes.
+● Collaborate with cross-functional teams, including Quality Assurance, Supply Chain, Sensor Engineering and
+Manufacturing Operations, to investigate and resolve issues promptly, logging and tracking defects through
+internal systems.
+● Design and implement new software features to enhance manufacturing efficiency, including the development
+of electronic batch record (EBR) systems to replace legacy paper-based methods.
+● Create systems that guide operators through each stage of sensor production, ensuring accurate material usage,
+equipment verification, and process validation before proceeding to subsequent steps.
+● Conduct User Acceptance Testing (UAT) to validate new functionality and confirm successful deployment to
+production environments.
+● Actively participate in daily stand-up meetings to communicate progress, discuss project timelines and
+coordinate tasks across multiple engineering teams.
+● Gained a strong understanding of sensor production workflows, contributing to both the initial screen
+manufacturing process and final foil bagging stage, ensuring full lifecycle knowledge of the product line.
+Technical Skills
+Development Languages: C#, SQL, Python (OpenCV, TensorFlow, PyTorch, scikit-learn, NumPy), R, ROS, Java, HTML, CSS,
+JavaScript, PHP
+Extensive experience in C# and SQL development through professional work at Abbott Diabetes Care, contributing to the
+production systems behind the FreeStyle Libre 2, 2+, 3 and 3+ glucose monitoring products. This involved developing new
+features and automating key stages of the manufacturing process, including electronic batch record systems that replaced
+legacy paper-based workflows. Strong understanding of software lifecycle practices, defect tracking and user acceptance
+testing within regulated environments. Additionally, I have significant experience in Python programming, with a strong
+focus on machine learning and artificial intelligence. During my MSc project on Human ‘Breathprint’ Identification, I
+implemented regression and classification models using advanced feature selection techniques to evaluate the system’s
+potential as a biometric tool. My wider experience includes reinforcement learning model development, robotic
+simulation using ROS Turtlesim, and cloud-based machine learning pipeline deployment on Microsoft Azure, where I
+containerised trained models using Docker for scalability and performance testing.
+Projects
+At Abbott, I contributed to the development and enhancement of software systems used in the manufacturing of
+FreeStyle Libre glucose monitoring sensors. This included working on major projects such as Screen Manufacturing (first
+stage of sensor assembly) and Foil Bagging (final packaging stage), developing process tracking applications that ensured
+material and equipment validation, database updates and compliance with manufacturing protocols.
+For my MSc in Artificial Intelligence, I developed a novel biometric identification system, based on the concept of a
+human ‘breathprint’. This project involved following the CRISP-DM lifecycle, including extensive data pre-processing and
+cleaning, as well as feature engineering and extraction. I applied regression algorithms such as Lasso, Ridge and
+ElasticNet to select the most relevant features from the dataset. I then implemented and evaluated classifier models,
+including Support Vector Machines (SVMs) and Random Forests, to classify models based on their breathprints and
+determine the uniqueness and accuracy of this biometric approach. The project demonstrated my strong analytical
+abilities, expertise in machine learning and proficiency in Python.
+Employment Experience
+Software Engineer (MES), Abbott Diabetes Care (November 2024 - January 2026) Location: Donegal Town, Co. Donegal.
+- Developed and maintained front-end and back-end applications using C# and SQL to support the production of
+FreeStyle Libre sensors, automating and optimising key manufacturing processes.
+- Designed and implemented an EBR system to replace paper-based workflows, improving traceability, accuracy
+and regulatory compliance in sensor production.
+Graduate Research Associate, BT Ireland Innovation Research Centre (April 2024 – September 2024) Location: Ulster
+University Belfast
+- Developed Python-based solutions for a smart city project at Belfast Harbour, focusing on IoT systems to enhance
+urban infrastructure and data-driven decision-making.
+- Collaborated with cross-functional teams to design and implement scalable IoT architectures, contributing to the
+real-time monitoring and automation of city services.
+Retail Assistant, The Range (Sept 2023 – March 2024) Location: Boucher Road, Belfast
+Network Administrator, Cedar Foundation (12 months July 2021-July 2022) Employer: Abigail Warnock – Location:
+Bangor, Co. Down.
+Office Worker, Abertay Training (6 months 2019-2020) Employer: Paul Horsburgh – Location: Gortin, Co. Tyrone
+Intern, Price Waterhouse Cooper (3 month internship – June 2017 - August 2017) Location: Belfast, Co. Antrim
+Skills Profile
+Organisation: Demonstrated strong organisational skills through the successful management of complex projects,
+such as developing a biometric identification system and IoT solutions for smart city infrastructure. This involved
+coordinating multiple tasks, adhering to timelines, and ensuring project milestones were met efficiently.
+Communication: Effectively communicated complex technical concepts, such as AI models and IoT architectures, to
+both technical and non-technical stakeholders. This was essential during collaborations with cross-functional teams at
+BT Ireland Innovation Research Centre and in academic settings.
+Adaptability: Quickly adapted to new challenges and technologies, as shown by my ability to transition between different
+AI techniques, cloud platforms, and IoT systems. This adaptability enables me to work effectively on diverse projects,
+from implementing machine learning models to developing smart city solutions.
+Referees
+Dr Omar Nibouche, Senior Lecturer, Ulster University Kieran McMonagle, MES Software Engineering Team
+Email: o.nibouche@ulster.ac.uk Lead, Abbott Diabetes Care
+Tel: +44 28 9536 5847 Email: kieran.mcmonagle@abbott.com
+Tel: N/A

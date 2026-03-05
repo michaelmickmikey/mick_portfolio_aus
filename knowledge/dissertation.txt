@@ -1,0 +1,745 @@
+Human Breathprints as Biometric Identifiers:
+Assessing Uniqueness and Reliability
+Michael McCallion
+MSc Artificial Intelligence
+Ulster University
+Belfast, Northern Ireland
+mccallion-m15@ulster.ac.uk
+Abstract— Breathprint analysis is emerging as a promising range. When it comes to the actual collection of breath spectral
+non-invasive biometric identifier, with definite potential to data from an individual, collecting a ‘breathprint’ is
+compete with more traditional methods like fingerprint considered much less invasive than the likes of collecting a
+scanning and facial recognition. In this study, two hybrid fingerprint or a retinal scanner. The individual or patient must
+machine learning models were developed to evaluate the simply exhale into a sensor. Whereas for both fingerprints and
+effectiveness of a human ‘breathprints’ ability to uniquely retinal scans, the subject must remain within close proximity
+identify patients, through utilising a dataset of Volatile Organic to a device, which can cause discomfort for certain patients.
+Compounds (VOC’s) collected from patients’ breath samples.
+The first model employed dimensionality reduction through The ‘breathprint’ can also be used for monitoring
+implementing Principal Component Analysis (PCA) and Linear metabolic conditions as well as being used for the early
+Discriminant Analysis (LDA), before applying regression-based detection of diseases. In this paper [3], it is proven that volatile
+feature selection algorithms called Lasso, Ridge and ElasticNet. organic compounds contain specific biomarkers that can be
+The second model altered this approach slightly by applying the indicative towards specific diseases, like diabetes and
+regression techniques used for feature selection prior to LDA. hyperglycemia. We also see in [4], that VOC’s “can hold the
+Both models then had their performance assessed using key for detecting early metabolic pathway changes in
+classifier techniques including Logistic Regression, Support
+carcinogenesis”. These papers evidence that not only is this
+Vector Machine (SVM) and Random Forest. Analysis
+method of non-invasive biometric collection useful for patient
+demonstrated that altering the sequence of feature selection and
+identification, but it also possesses numerous other
+dimensionality reduction can significantly impact classification
+advantages. Paper [5] documents that VOCs found in the
+accuracy. These results suggest that while breathprints have
+breath, can be indicative of certain metabolic and pathological
+considerable potential as a biometric identifier, refining the
+changes in the body.
+analytical approach is key for optimizing classification
+outcomes. Further work is needed to fully harness the Although the research surrounding the human breathprint
+capabilities of breathprint analysis for reliable and accurate in relation to uniquely identifying subjects is promising, there
+identification of individuals.
+is a disconnect in research regarding how reliable the bio-
+identifier is. This project aims to try to bridge the gap, through
+Keywords— Breathprint Analysis, Machine Learning, Volatile
+the production of a machine learning classifier model, that can
+Organic Compounds (VOCs), Linear Discriminant Analysis
+identify a patient or individual through a given test sample,
+(LDA), Random Forest
+with a relative degree of confidence.
+I. INTRODUCTION
+II. LITERATURE REVIEW
+Biometric identification techniques have been at the forefront
+of security, medical and personal identification systems for As previously mentioned, biometric idenfitication has been
+many years now. Commonly used techniques include of importance for many years now, with the most commonly
+fingerprints, retinal scanning and facial recognition. However, used being fingerprint, iris and facial recognition. The use of
+in recent years it has become apparent that the need for more exhaled human breath for unique identification is an
+non-invasive techniques has increased. An ideal candidate for emerging technique that is just now beginning the gain
+this is the use of mass spectrometry of the human breath to traction. The means of collecting the human breathprint is a
+identify a unique individual, amongst a group of
+non-invasive approach whereby the user exhales into a device
+‘breathprints’. A human ‘breathprint’ contains compounds
+which then collects the data or Volatile Organic Compounds
+known as Volatile Organic Compounds (VOC’s). In 1971,
+(VOC’s). These VOC’s vary by individual, depedendent on
+Linus Pauling proved that the exhaled human breath contains
+their age, sex, diet and health condition. In [6], it is
+over 250 substances [1]. With the equipment available to us
+today, it is possible to identify over 1000 unique substances in highlighted how VOC’s can provide important insight into
+the exhaled breath. These VOC’s can be used to uniquely the current condition of an inidviduals body, and whether or
+identify which subject (patient) the breath belongs to. In this not they are at risk of any diseases. Through the same logic,
+paper, we utilise data processing, cleaning and wrangling a breath print analysis should be able to be used to identify a
+techniques, exploratory data analysis, statistical analysis, data patient uniquely, from a database of existing patients. In a
+visualisation as well as various machine learning algorithms paper [7], that studied the volatile compounds that exist in the
+(regression and classification models), to develop a hybrid
+human breath, they grouped VOC’s into “chemical functional
+model capable of successfully identifying an individual
+groups (e.g., methylated hydrocarbons or aldehydes; based
+simply by running the models developed on their breath or
+on known metabolic and enzymatic pathways).” In the same
+spectral data. Methods used today, including Gas
+paper, they were able to achieve a 93% classification
+Chromatography-Mass Spectrometry (GC-MS) and
+Secondary Electrospray Ionisation Mass Spectrometry (SESI- accuracy for cancer within individuals, using a Linear
+MS) [2], can measure VOC’s down to a parts per trillion (ppt) Discrimnant Analysis (LDA) and Random Forest classifier
+Michael McCallion – B00960854
+model. [8] Shows us that VOC’s can be used for their invasive biometric identification method that offers the same
+association with numerous diseases. Airway diseases such as (if not better) levels of accuracy and reliability.
+asthma and chronic obstructive pulmonary disease (COPD)
+can be identified within patients whos ‘breathprint’ contains One such example of a non-invasive method for this is the
+specific “carbonyl-containing classes (i.e., aldehydes, esters use of human ‘breathprints’ as a biometric identifier. Volatile
+and ketones) and hydrocarbons (i.e., alkanes and alkenes).” Organic Compounds (VOC’s) that can be analysed within the
+human breath can be the key to proving if exhaled human
+Although in the above mentioned paper [8], that VOC’s can
+breath could be as uniquely identifiable as the likes of a
+identify airway dieases, it was mentioned that although these
+fingerprint or iris. It holds the potential to revolutionise
+biomarkers do show promise, future work within the area
+biometric identification, particularly in the field of digital
+should prioritise the clear reporting of accuracy and
+health. This project aims to discover whether human
+multiariate methods, whilst still working on the classification
+‘breathprints’ could provide a reliable, unique and accurate
+of these volatile metabolites using machine learning
+biometric identifier, comparable to that of fingerprint or
+algorithms.
+facial recognition.
+In [8], we can see that there has been development
+In healthcare, the demand for non-invasive
+of a Convolutional Neural Network (CNN), as well as other
+monitoring tools is increasing in demand, with breathprint
+neural network models (Multilayer Perceptron and Recurrent
+analysis offering a means to seamlessly identify patients
+Neural Network), that produced an overall accuracy of 97.8%
+whilst providing valuable observations on their health status.
+in distinguishing healthy patients from patients that possess
+Granted that ‘breathprints’ could successfully be discovered
+lung cancer. [9] This paper found that carcinogenic VOCs
+to be as powerful as fingerprints, they could be used in
+exist and there is a relationship between benzene and
+applications such as a secure and safe way to identify patients
+formaldehyde being present in exhaled breath linking to
+and gain access to their medical records. More importantly,
+forms of cancer, including lung and prostate.
+before it is adopted as a tool for identification, we must
+Recently, the use machine learning (ML) algorithms
+address the fundamental question of their uniqueness and
+within the field of biometrics have been increasing in
+reliability.
+popularity. These ML techniques focus primarily on pattern
+Three of the main challenges in this project are deemed
+recognition, classification and prediction. One of the reasons
+to be:
+ML has become integral to the field of biometrics is due to
+1. Data Variability – Datasets containing varying
+the algorithms’ ability to handle datasets that are high-
+VOC values in the form of continuous variables
+dimensional and complex. In [10], the study delves into and
+poses the issue of the inherent variability within the
+discusses the various ML strategies for improving
+dataset. The VOC’s present within a human breath
+recognition rates and accuracy in complex datasets. This
+constantly fluctuate and change throughout their
+pattern recognition can be applied to human breath print
+lifetime. Dependent on several factors including
+analysis, as the machine learning algorithms can detect
+age, diet, health conditions and exposure to certain
+miniscule variations in VOCs, which can be used for
+environments. Naturally, the variability of such
+differentiation between patients, in turn allowing the patient
+data elicits questions relating to the stability and
+to be identified amongst others. These AI models can also
+uniqueness of breathprints over time. The overall
+easily classify biometric data into classes or categories. Using
+question remains – can a breathprint consistently
+an example related to this paper, classifying exhaled breath
+identify a subject or will the variations within the
+data to a specific patient or individual. This is one of the most
+data undermine the reliability of the tool.
+important factors when it comes to developing the non-
+2. Small Sample Sizes – An additional challenge is
+invasive technique of breath analysis further. As the machine
+how widely available large, labelled datasets are,
+learning model learns from the data which it has been trained
+that capture the entire range of breathprint
+on, it develops establishes an ability to make accurate and
+variability. As it is seen as a new field of study,
+specific predictions. Through the analysis of specific trends
+with most research occurring in the last 4 years,
+and relationships within the ‘breathprint’ data, the model can
+there is a lack of extensive datasets containing
+detect potential health issues during the early stages. Here
+exhaled breath information. The use of small
+[11], we can see a study that explored the use of machine
+datasets and in turn, small training and test sets
+learning algorithms to develop a biometric system based on
+applied to machine learning models, can result in
+exhaled breath from a human. The system developed utilised
+overfitting. This means that the models perform
+ML models to authenticate users, achieving high accuracy
+well on training data, but fail to perform as well on
+rates in confirming these users. Further reviews on the
+new, unseen data when the models have been
+literature surrounding this area can be found in the
+deployed.
+supplementary materials.
+3. Overfitting & Model Complexity – As breathprint
+III. PROBLEM SCENARIO data is extremely complex, machine learning
+models are used to analyse the data and then
+In the area of biometrics, fingerprint scanning has often been
+classify it accurately. Again, due to the complex
+perceived as the best available option to subjects or
+nature of the data, the models can be at risk of
+individuals due to how reliable and secure of a method it is.
+overfitting. To mitigate the risk, cross-validation,
+However, as the requirements for healthcare technology
+regularization and data augmentation techniques
+evolves within the field of digital health, there is a high
+are utilised.
+demand for the development and implementation of a non-
+Breathprint analysis is said to still be in its exploratory phase. to identify the VOCs. Further details of the data collection
+The majority of studies are limited by small sample sizes with including ethical considerations are documented in the
+high data variability. original study [2].
+The primary objective of this project is to determine
+B. Data Splitting
+whether human ‘breathprint’ can be as uniquely identifiable
+as human fingerprints. More specifically, the study aims to: The dataset was divided into two subsets:
+• Training set – This comprised of 80% of the original
+1. Assess uniqueness – Investigate uniqueness of dataset.
+‘breathprints’ by analysing the variability of VOC’s • Test set – This comprised of 20% of the original
+patterns including their inter-individual and intra- dataset.
+individual relationships. This train-test split allowed for the machine learning models
+2. Mitigate data variability – Apply robust and to be trained on one subset of data (training set) and then to
+effective pre-processing techniques to normalise best tested on a completely separate, unseen dataset (test set),
+breathprint data. to evaluate the model’s performance and thus providing
+3. Address small sample sizes – Use cross-validation evaluation metrics.
+and data augmentation to improve the
+C. Scaling the Data
+generalisability of the models, despite the
+As a result of the varying scales of VOC’s, it was crucial to
+challenges posed by limited datasets.
+standardise the dataset before proceeding with
+4. Prevent overfitting – Implement regularisation
+dimensionality reduction. To achieve this, the
+methods and validate model performance.
+‘StandardScaler()’ function was used to transform the data.
+5. Evaluate classifier models – Implement
+This meant each feature within the dataset had a mean value
+classification models and provide an evaluation for
+of zero, with a standard deviation of one. This means that all
+each model through understanding their accuracy,
+features contribute equally to the analysis, especially when
+precision, recall and f1-score metrics.
+working with sensitive techniques like PCA and LDA. This
+process was key in preparing the data for later steps in the
+Determining if breathprints can be utilised as a unique
+analysis. Scaling helped to reduce the impact of outliers and
+biometric identifier, comparable to fingerprints, is crucial for
+ensured the data remained on a consistent scale. It helped
+advancing the field of non-invasive biometric identification.
+make sure that the variability found within the dataset was
+If successful, the research could be the steppingstones for
+due to unseen patterns within the data and not differences in
+breathprint to be used in several different applications (e.g.,
+the scale of features.
+secure patient identification in healthcare). By addressing the
+challenges of data variability, small sample sizes and model D. Principal Component Analysis (PCA)
+overfitting, this project aims to provide an analysis of the
+Moreover, the next stage in the process was to apply Principal
+human breathprints’ potential as a biometric tool.
+Component Analysis (PCA) to the statistically significant
+IV. METHODOLOGY features that had been extracted through the previous stages
+mentioned. The purpose of this was to further reduce the size
+The following section outlines the methodological approach
+of the dataset whilst retaining a specific degree of variance.
+that was planned to be used to analyse breathprint data for
+In this study, 99.99% of variance was retained whilst
+biometric identification. The process will involve multiple
+performing PCA. PCA is known as a linear dimensionality
+techniques for statistical analysis as well as for machine
+reduction technique. The goal of applying PCA is to
+learning. These include Kruskal-Wallis testing, Bonferroni
+transform the data into a set of principal components [20].
+correction, Principal Component Analysis (PCA). The
+These new principal components (PC’s) are ranked by the
+machine learning models implemented regression algorithms
+amount of variance which they explain. The cumulative value
+called Ridge, Lasso and ElasticNet for feature selection.
+of the variance of all principal components will come to a
+Models known as Logistic Regression, Support Vector
+total of 99.99%.
+Machines (SVM) and Random Forests were used for
+As PCA was applied whilst retaining 99.99%, it assured
+classifying the test data after the models have been trained.
+that the most important features remained whilst eliminating
+The overall goal, as previously mentioned, is to identify the
+any redundant or noisy data that remained [19]. As the dataset
+most important features from the dataset and then classify the
+has now been greatly reduced, it reduces the computational
+test VOC samples to a specific individual or patient.
+resources required for machine learning models and helps
+A. Data Collection eliminate the threat of these models’ overfitting. Before the
+PCA was applied, a standard scaler was used in order to
+The dataset used was generously provided by Martinez-
+standardise the data. This is due to PCA being sensitive
+Lozano Sinues, P. et al. [2], the authors of study performed in
+towards the scale of variables within the dataset [20]. A
+Switzerland. They have granted permission for this to be used
+variance retention of 99.99% allowed for the maintenance of
+in the study. The original study involved eleven subject (6
+the majority of information from the original dataset, whilst
+males, 5 females) with a heterogeneous ethnic background.
+effectively reducing the dimensionality of the dataset.
+Over nine days, breath samples were collected at specific
+times. Food and drink intake were controlled prior to E. Linear Discriminant Analysis (LDA)
+measurements being taken. Breath samples were analysed
+In the 1st iteration of the model, Linear Discriminant Analysis
+using a quadrupole time-of-flight mass spectrometer (Q-
+was applied after PCA, prior to the feature selection
+TOF), employing a secondary electrospray ionisation (SESI)
+regression algorithms being implemented. In the 2nd iteration,
+LDA was applied after the feature selection process. The goal
+of LDA is to maximise separability between classes
+(patients). LDA is a supervised technique that finds linear
+combinations of features which best separate classes [21].
+Through doing so, LDA was able to isolate the most Figure 3 - ElasticNet Regression Formula [31]
+discriminative features within the dataset.
+G. Classification Models
+The application of LDA produced a refined dataset which
+contained the most relevant components for classification. Logistic Regression
+Through reducing the features to only those that were most Logistic regression was applied to classify the VOC test
+statistically significant discriminants, LDA enhanced the samples. This model predicts the probability of a binary
+classifier model’s ability to successfully identify patients. outcome [26]. This model’s purpose was to provide a baseline
+This step allowed for the final analysis to focus on features comparison against other more complex models employed.
+which possessed the most significant biomarkers for patient Although this model is seen as a basic or simple technique, it
+identification. was found to be a useful tool in this study.
+Random Forest
+F. Feature Selection using Regression models
+This model was also implemented to classify the VOC test
+Lasso Regression samples. It is known as an ensemble learning method [27]
+One of the regression algorithms implemented for feature that constructs several decision trees, then merging them to
+selection is known as Lasso (Least Absolute Shrinkage produce a single, accurate and stable prediction. Random
+Operator). This linear regression technique possesses an L1 forest is extremely effective at handling highly dimensional
+regularisation penalty. This penalty shrinks a number of the data. It averages the prediction values of multiple decision
+models less important coefficients to zero [22]. This trees and in turn reduces variance whilst improving
+technique was particularly useful within this project as it generalisation.
+helped to identify the most relevant VOC’s by eliminating Support Vector Machines (SVM)
+features with little or no contribution to the model. As Lasso This model works by finding the optimal hyperplane that
+selects a specific subset of features, it improves the separates data into different classes [27], maximizing the
+interpretability of the model. margin between closest points of different classes (i.e.,
+support vectors). The SVM’s models’ ability to deal with
+non-linear relationships made it a strong choice for
+‘breathprint’ classifiers.
+H. Model Evaluation & Validation
+10-fold cross validation was performed on the training data
+Figure 1 - Lasso Regression Formula [29] to ensure robustness and generalisability of models. This
+process involves splitting the data into 10 subsets, with the
+Ridge Regression
+model being trained on 9 of them and then validated on the
+A second linear regression method known as Ridge
+final remaining subset. This process is iterated 10 times in
+regression was applied. This model uses an L2 regularisation
+total, with each subset serving as the validation set once. This
+penalty, which discourages large coefficients, but does not
+cross-validation technique was pivotal in preventing
+shrink them to zero (like Lasso does) [23]. Ridge regression
+overfitting and ensuring consistent model performance. The
+is used to determine whether regularisation without sparsity
+results from each fold were averaged, providing a more
+would return a more valuable feature selection. Ridge keeps
+accurate and reliable estimate of the model’s accuracy.
+all features. However, it penalises its coefficients so to reduce
+Performance Metrics
+multicollinearity and improve model generalisation [24].
+Model performance was evaluated using accuracy, precision,
+recall and f1-score metrics. The metrics provided a
+comprehensive assessment of the models’ ability to correctly
+classify VOC samples and assign them to the correct subject.
+Results addressed in next section.
+V. RESULTS
+The first approach to analyse the dataset was implementing a
+hybrid model which utilised regression and classification
+Figure 2 - Ridge Regression Formula [30]
+machine learning algorithms, after dimensionality reduction
+techniques had been performed. Firstly, scaling of the data
+ElasticNet Regression
+took place using a StandardScaler so that each feature within
+The ElasticNet regression model combines L1 and L2
+the dataset contributed equally to the data analysis. PCA was
+regularisation to cater towards a more balanced approach to
+applied to the scaled data, with a variance retention of 95%.
+feature selection [25]. The use of ElasticNet was crucial in
+The number of features was reduced significantly with the
+this project as it allowed for a compromise between the
+PCA train set shape being “154, 13” and the PCA test set
+techniques used in both Lasso and Ridge. ElasticNet is found
+shape being “39, 13”. In total, the 193 patients’ samples were
+to be effective when the dataset contains highly correlated
+reduced to a total of 13 principal components. This is a
+features and ensuring relevant features were selected whilst
+penalizing less significant features.
+significant reduction that still encapsulates the vast majority 3. Random Forest
+(95%) of original variance.
+Next, Linear Discriminant Analysis (LDA) was The performance of each model along with their evaluation
+applied to the previously transformed PCA dataset. This metrics can be seen in the table below:
+supervised dimensionality reduction technique aims to Classification Methods Evaluation Metrics (1st Iteration)
+maximise the separation between classes. The Model Accuracy Precision Recall F1-score
+Names
+implementation of LDA further reduced the dataset to 193,
+Logistic 25.64 28.61 25.64 24.46
+10. Meaning that the LDA algorithm identified 10 Regression
+discriminant components to be the most significant in SVM 30.77 40.72 30.77 33.03
+distinguishing between classes in the dataset. Note, that all Random 33.33 32.46 33.33 32.01
+Forest
+discriminant components were retained to preserve full
+Table 3 - Evaluation Metrics for Classifier Models (1st Iteration)
+discriminatory power of the model.
+Three regression models were employed: Lasso,
+The logistic regression model achieved sub- standard results,
+Ridge & ElasticNet. Each model applied a penalty to less
+demonstrating low scores across all metrics. An accuracy of
+relevant features and in turn enhanced the model’s
+25.64% shows that the model incorrectly classified the vast
+interpretability and reduced the chances of overfitting.
+majority of test samples.
+The performance of each regression model was evaluated on
+The SVM model outperformed that of the Logistic
+their R2 score. R2 score indicates the proportion of variance in
+Regression model, achieving both a higher accuracy and
+the dependent variable that is predictable from the
+precision (30.77% accuracy and 40.72% precision). The
+independent variables [28]. The R2 scores for each were as
+increase in the f1-score (33.03%) evidences a greater balance
+follows:
+between precision and recall. This implies that SVM
+experienced a greater success at distinguishing between
+R2 scores of Regression Models (1st Iteration)
+classes (patients).
+Regression Model R2 Score
+The Random Forest model achieved the highest
+Lasso -0.0195
+Ridge -0.0106 accuracy of 35.90%. This model achieved an f1-score of
+ElasticNet 0.0016 33.15%, like that of the SVM model. The performance of this
+Table 1 - R^2 scores for Regression Models random forest model shows that it was the best suited to
+handling the complexity of the VOC data, meaning it is the
+As seen above, the ElasticNet model was the best performer.
+most promising classifier of these tested.
+Although, the R2 value for each of the models are low,
+The second model iterated was slightly different
+meaning they all struggled to explain the variance in the
+from the first model. In this model, Principal Component
+dataset.
+Analysis (PCA) is not used. The regression algorithms for
+feature selection are run first, then Linear Discriminant
+Analysis (LDA) is applied to the selected features. The aim
+of this was to refine the feature selection process and then
+transform the dataset into discriminant components by
+utilising the dimensionality reduction technique. The results
+from this model can be found following.
+As per the previous model, the dataset was scaled
+before undergoing feature selection. Each model had the
+Figure 4 - Else-if statement used to automatically select best model same randomized search hyperparameters as in the first
+iteration. The R2 score for each can be found below:
+An else-if statement (figure 1) was then implemented which R2 scores of Regression Models (2nd Iteration)
+chose the highest performing model based on which had the Regression Model R2 Score
+highest R2 score. The parameters of the best performing Lasso -0.7125
+Ridge -0.0171
+ElasticNet model along with the other two Lasso and Ridge
+ElasticNet -0.8987
+models, including their optimal hyperparameters used can be
+Table 4 - R^2 scores for Regression Models (2nd Iteration)
+seen following:
+Although all R2 scores are negative, the Ridge regression
+Optimal Models for Feature Selection (1st Iteration) model was the best performer. Although this score is not
+Model Names Alpha value L1_ratio R2 score ideal, it was significantly better than that of the Lasso and
+Lasso 0.3449 N/A 0.0195
+ElasticNet regression models. These negative values once
+Ridge 9.8699 N/A 0.1056
+ElasticNet 0.8859 0.1960 0.0016 again suggest that all three models struggled to explain
+Table 2 - Regression models and their optimised parameters (1st variance in the dataset adequately.
+Iteration) The same else-if statement (figure 1) was used to
+automatically determine the best model (based on R2 scores).
+Using the selected features from the ElasticNet model, three The models along with its optimal parameters and R2 score
+different classification models were applied to classify the can be seen below.
+test VOC samples to specific individuals. The 3 models used
+were: Optimal Models for Feature Selection (2nd Iteration)
+1. Logistic Regression Model Names Alpha value L1_ratio R2 score
+2. Support Vector Machines (SVM’s) Lasso 0.0553 N/A -0.7125
+Ridge 0.0553 N/A -0.0171 Contrastingly, each negative coefficient suggests the
+ElasticNet 0.0696 0.5107 -0.8987 opposite.
+Table 5 - Regression Models and their Optimised Parameters (2nd
+The most influential discriminant component was
+Iteration)
+LDS, capturing a coefficient of 0.6407. This implies that this
+specific component captures a great amount of discriminatory
+Following feature selection using regression, LDA was then
+information. Conversely, LD3 and LD6 contributed
+applied to the new dataset to reduce dimensionality. The
+negatively, meaning the models may have struggled with
+process of LDA transformed the data into 10 linear
+classification due to the presence of these features.
+discriminants. This reduced the dataset to a shape of 193, 10,
+the same as that found in the first iteration, whereby the
+VI. DISCUSSION
+dataset contained 10 discriminant components in total.
+Both iterations of models have displayed insights into how
+This proves that the LDA was successful in reducing
+effective different approaches to feature selection and
+the dataset whilst retaining the discriminatory power required
+dimensionality reduction are when classifying the human
+for classification. The same 3 models were applied, with the
+breathprint data. Through the comparison of the metrics
+following table displaying their metrics.
+across these models, it is apparent that certain approaches
+Classification Methods Evaluation Metrics (2nd Iteration)
+impact accuracy and reliability of models.
+Model Accuracy Precision Recall F1-score In the first iteration of the model, where PCA and
+Names LDA were applied first, before the regression models, the
+Logistic 56.41 65.81 56.41 55.99 Ridge regression model outperformed Lasso and ElasticNet
+Regression
+with an R2 score of -0.0106 (table 1). The result shows that
+SVM 41.03 61.05 41.03 44.74
+Random 38.46 32.46 33.33 32.01 whilst Ridge was somewhat effective the model’s overall
+Forest ability to understand the variance of the data was limited.
+Table 6 - Evaluation Metrics for Classifier Models (2nd Iteration) Although ElasticNet (which balances L1 and L2
+regularisation) demonstrated a positive R2 score of 0.0016
+When comparing the Logistic Regression model to the
+(table 1) it was not a strong enough of a score to justify using
+previous iteration, it has shown significant improvement -
+it, given its slightly better score.
+across all metrics. Particularly with accuracy, where it has Contrastingly, during the 2nd iteration (where
+increased from 25.64% to 56.41%. This shows how regression models were applied before LDA), the R2 values
+performing feature selection before LDA and removing PCA
+decreased across each of the 3 models used, in particular with
+altogether is beneficial. From the results, it is clear that by
+Lasso and ElasticNet. Lasso exhibited a score of -0.7125 and
+applying the regression models in this fashion, it resulted in
+ElasticNet with -0.8987 (Table 4). In this iteration, the Ridge
+a significant increase in the model’s ability to classify data. regression model also saw its R2 score drop to -0.0171. One
+The SVM model also displayed a noticeable
+possible reason for this may be due to reversing the feature
+improvement across all metrics, with the two main
+selection and dimensionality reduction processes. In doing
+improvements being accuracy (increased from 30.77% to
+so, it may have resulted in the retention of more noise within
+41.03%) and recall (increased from 40.72% to 61.05%). This
+the dataset, in turn reducing the effectiveness of the
+proves that the SVM model also benefitted from the
+regression techniques used for feature selection.
+alternative approach. The difference in R2 scores highlight the importance
+The Random Forest classifier also demonstrated an
+of the sequence in which the aforementioned techniques were
+improvement in performance, but to a lesser extent than that
+applied. The results show applying both PCA and LDA may
+of the latter two models. The accuracy increased from
+be a better approach by allowing the regression models to
+33.33% to 38.46% and the precision increased from 32.48%
+focus on more prominent or important features. This could be
+to 54.1%.
+because the LDA maximises separability between classes
+A table showing feature importance based on the
+(patients). Thus, resulting in a better refined dataset for
+logistic regression models coefficients can be seen below:
+classification.
+Feature Importance based on Logistic Regression coefficients (2nd
+Among all the models test in the first iteration, the
+Iteration)
+Linear Discriminant Component Value
+Random Forest model achieved the highest accuracy score of
+LD5 0.6407 33.33%, with a recall score of 33.33% also. These metrics
+LD7 0.2077 would be considered as low, evidencing that the model
+LD4 0.1217 struggled to classify the data. This may be due to the
+LD9 0.0776
+complexity and high dimensionality of the dataset.
+LD10 -0.0875
+The Logistic Regression model used, which is
+LD2 -0.1034
+LD8 -0.4617 usually seen as easier to understand and less susceptible to
+LD1 -0.5926 overfitting, demonstrated a poor performance in the first
+LD6 -0.6388 iteration with an accuracy of 25.54% and an f1-score of
+LD3 -0.7191 24.46%. This may be due to Logistic Regression being a
+Table 7 - Logistic Regression Coefficients (2nd Iteration)
+linear model, meaning it may well have struggled to capture
+complexities that exist within the data. However, the 2nd
+The positive coefficients indicate that an increase in the
+iteration of the model managed to display a significant
+corresponding linear discriminant contributes positively to
+improvement in the Logistic Regression models
+the likelihood of assigning a sample to a particular class.
+performance. In this iteration, the modes performance
+increased to 56.41%, with its f1-score increasing to 55.99%
+(Table 6). This shows that by applying feature selection first, VII. CONCLUSION
+then LDA after, it helped to boost the Logistic Regressions
+This subsection of the study aimed to test the feasibility of
+scores by reducing the dataset to its most predictive features.
+breathprint analysis as a non-invasive biometric identifier,
+The Random Forest model also displayed a slight
+with an emphasis on the application of machine learning
+improvement from the first iteration to the second iteration,
+methodologies for feature selection and classification. Two
+with the accuracy score increasing from 33.33% to 38.46%.
+hybrid models allowed deep insights into the optimal
+This again implies that the Random Forest model performs
+sequencing of the dimensionality reduction and feature
+better on a dataset which was reduced using feature selection
+selection process. The first one, applying PCA and LDA
+first, then the classes were maximally separated using LDA.
+before feature selection, provided modest classification
+Moreover, the SVM models performance increased
+accuracy, especially with the case of Random Forests. The
+from 1st iteration to 2nd iteration, with accuracy and prediction
+2nd model reversed this process, conducting feature selection
+scores increasing to 41.03% (from 30.77%) and 66.05%
+for LDA, and performance of all three models was enhanced.
+(from 40.72%) respectively.
+The present study gave some evidence that methodological
+Table 7 displays feature importance based on Linear
+sequencing would help in improving the discriminating
+Regression coefficients. It provides insights into which linear
+power of VOC patterns; on the other hand, the enhancements
+discriminants were the most influential in the classification
+indicate problems in the classification of high-dimensional
+task. ‘LD5’ had the highest positive impact (a value of
+and complex data. Future work should consider other
+0.6407) on the models’ predictions. This made LD5 the most
+methods in the dimensionality reduction technique that would
+significant feature in contributing towards predictions. It
+be a better alternative to PCA, and also look at more advanced
+implies that LD5 captures a vital aspect of the data which
+ensemble techniques in an effort to make better the accuracy
+holds a strong relationship with the class labels.
+of breathprint identification using machine learning
+techniques.
+In the contrary, ‘LD3’ has the greatest negative impact (-
+0.7197). This may indicate that the discriminant component ACKNOWLEDGMENTS
+holds features which are negatively correlated towards the
+I would like to thank Dr. Omar Nibouche, my project
+classification outcome. The data possessing both strongly
+supervisor, for his guidance and support throughout the
+positive and negative coefficients demonstrates the
+entirety of this project.
+complexity of the dataset, with certain features contributing
+positively and others negatively. REFERENCES
+It can be assumed that the model relied on a balance
+[1] Pauling, L., Robinson, A. B., Teranishit, R., & Cary, P.
+of features that had positive and negative impacts. This
+(1971). Quantitative Analysis of Urine Vapor and Breath by
+reinstates the importance of the dataset possessing a diverse
+Gas-Liquid Partition Chromatography (orthomolecular
+set of discriminants. However, as the majority of the
+medicine/vitamins/controlled diet) (Vol. 68, Issue 10).
+discriminant component values were relatively small, it
+https://www.pnas.org
+shows that no single feature dominated the classification task.
+[2] Martinez-Lozano Sinues, P., Kohler, M., & Zenobi, R.
+This reinforces the need for an effective combination of
+(2013). Human Breath Analysis May Support the Existence
+features.
+of Individual Metabolic Phenotypes. PLoS ONE, 8(4).
+Comparing both iterations shows that some of the
+https://doi.org/10.1371/journal.pone.0059909
+adjustments to the methodology led to improvements
+[3] Kaloumenou, M., Skotadis, E., Lagopati, N.,
+(especially with the Logistic Regression model), but the
+Efstathopoulos, E., & Tsoukalas, D. (2022). Breath Analysis:
+overall performance of all 3 models in both iterations
+A Promising Tool for Disease Diagnosis—The Role of
+remained modest. The key point to recognize here is that the
+Sensors. In Sensors (Vol. 22, Issue 3). MDPI.
+order in which the dimensionality reduction and feature
+https://doi.org/10.3390/s22031238
+selection techniques are performed can greatly impact model
+[4] Peled, N., Fuchs, V., Kestenbaum, E. H., Oscar, E., &
+performance.
+Bitran, R. (2021). An update on the use of exhaled breath
+Future work should focus on further refining these
+analysis for the early detection of lung cancer. In Lung
+techniques by exploring alternative or additional techniques
+Cancer: Targets and Therapy (Vol. 12, pp. 81–92). Dove
+to implement. More sophisticated regularisation techniques
+Medical Press Ltd. https://doi.org/10.2147/LCTT.S320493
+could be employed alongside non-linear dimensionality
+[5] Peled, N., Fuchs, V., Kestenbaum, E. H., Oscar, E., &
+reduction processes like t-Distributed Stochastic Neighbour
+Bitran, R. (2021). An update on the use of exhaled breath
+Embedding (t-SNE) or Uniform Manifold Approximation
+analysis for the early detection of lung cancer. In Lung
+and Projection (UMAP).
+Cancer: Targets and Therapy (Vol. 12, pp. 81–92). Dove
+Given the variability in model performance, further
+Medical Press Ltd. https://doi.org/10.2147/LCTT.S320493
+analysis could look into ensemble methods that combine the
+[6] Das, S., Pal, S., & Mitra, M. (2016). Significance of
+strength of multiple models to achieve more robust
+Exhaled Breath Test in Clinical Diagnosis: A Special Focus
+predictions.
+on the Detection of Diabetes Mellitus. In Journal of Medical
+The analysis of feature importance reinforces the
+and Biological Engineering (Vol. 36, Issue 5, pp. 605–624).
+need to delve into specific characteristics of breathprint data,
+Springer Berlin Heidelberg. https://doi.org/10.1007/s40846-
+that contributes the most to classification.
+016-0164-6
+[7] Issitt, T., Wiggins, L., Veysey, M., Sweeney, S. T.,
+Brackenbury, W. J., & Redeker, K. (2022). Volatile
+compounds in human breath: Critical review and meta- for Machine Learning-Based Disease Risk
+analysis. In Journal of Breath Research (Vol. 16, Issue 2). Prediction,” Frontiers in Bioinformatics, vol. 2, Jun. 2022,
+IOP Publishing Ltd. https://doi.org/10.1088/1752- doi: https://doi.org/10.3389/fbinf.2022.927312.
+7163/ac5230 [20] A. Biswal, “Principal Component Analysis in Machine
+[8] Ibrahim, W., Natarajan, S., Wilde, M., Cordell, R., Learning | Simplilearn,” Simplilearn.com, Apr. 24, 2023.
+Monks, P. S., Greening, N., Brightling, C. E., Evans, R., & https://www.simplilearn.com/tutorials/machine-learning-
+Siddiqui, S. (2021). A systematic review of the diagnostic tutorial/principal-component-analysis
+accuracy of volatile organic compounds in airway diseases [21] Raman, “ML | Linear Discriminant
+and their relation to markers of type-2 inflammation. ERJ Analysis,” GeeksforGeeks, May 03, 2019.
+Open Research, 7(3). https://www.geeksforgeeks.org/ml-linear-discriminant-
+https://doi.org/10.1183/23120541.00030-2021 analysis/
+[9] Lee, B., Lee, J., Lee, J. O., Hwang, Y., Bahn, H. K., Park, [22] Hesamian, G., Johannssen, A., & Chukhrova, N.
+I., Jheon, S., & Lee, D. S. (2024). Breath analysis system with (2024). An explainable fused lasso regression model for
+convolutional neural network (CNN) for early detection of handling high-dimensional fuzzy data. Journal of
+lung cancer. Sensors and Actuators B: Chemical, 409. Computational and Applied Mathematics, 441.
+https://doi.org/10.1016/j.snb.2024.135578 https://doi.org/10.1016/j.cam.2023.115721
+[9] Moura, P. C., Raposo, M., & Vassilenko, V. (2023). [23] Nakatsu, Robbie T.. "Validation of machine learning
+Breath volatile organic compounds (VOCs) as biomarkers for ridge regression models using Monte Carlo, bootstrap, and
+the diagnosis of pathological conditions: A review. In variations in cross-validation" Journal of Intelligent
+Biomedical Journal (Vol. 46, Issue 4). Elsevier B.V. Systems, vol. 32, no. 1, 2023, pp. 20220224.
+https://doi.org/10.1016/j.bj.2023.100623 https://doi.org/10.1515/jisys-2022-0224
+[10] Singh, C. (2023). Machine Learning in Pattern [24] C. M. Bishop, Pattern Recognition and Machine
+Recognition. European Journal of Engineering and Learning. 2023.
+Technology Research, 8(2), 63–68. [25] J. Kenneth Tay, B. Narasimhan, and T. Hastie, “Elastic
+https://doi.org/10.24018/ejeng.2023.8.2.3025 Net Regularization Paths for All Generalized Linear
+[11] Karunanethy, M., Tripathi, R., Panchagnula, M. v., & Models,” Journal of Statistical Software, vol. 106, no. 1,
+Rengaswamy, R. (2024). User authentication system based Jan. 2023, doi: https://doi.org/10.18637/jss.v106.i01.
+on human exhaled breath physics. PLoS ONE, 19(4 April). [26] S. J. Russell and P. Norvig, Artificial intelligence : a
+https://doi.org/10.1371/journal.pone.0301971 modern approach. London: Pearson, 2021.
+[12] Li, W., Xu, J., Yang, W., Liu, F., Zhou, H., & Yan, Z. [27] P. A. Flach, Machine learning : the art and science of
+(2024). Approach and application of extracting matching algorithms that make sense of data. Cambridge: Cambridge
+features from E-nose signals for AI tasks. Biomedical Signal University Press, 2012.
+Processing and Control, 90. [28] S. Raschka and V. Mirjalili, Python machine learning :
+https://doi.org/10.1016/j.bspc.2023.105869 machine learning and deep learning with python, scikit-
+[13] Pegoraro, J. A., Lavault, S., Wattiez, N., Similowski, T., learn, and tensorflow 2. Birmingham: Packt Publishing,
+Gonzalez-Bermejo, J., & Birmelé, E. (2021). Machine- Limited, 2019.
+learning based feature selection for a non-invasive breathing [29] Y. Gupta, “Lasso Regression — In ‘Simple’
+change detection. BioData Mining, 14(1). English,” Data Science Simplified, Sep. 29, 2022.
+https://doi.org/10.1186/s13040-021-00265-8 https://medium.com/dssimplified/lasso-regression-in-
+[14] Suresh, K. C., Prabha, R., Hemavathy, N., Sivarajeswari, simple-english-8558e354781c
+S., Gokulakrishnan, D., & Jagadeesh kumar, M. (2022). A [30] K. Kargın, “Ridge Regression Fundamentals and
+Machine Learning Approach for Human Breath Diagnosis Modeling in Python,” Medium, Apr. 17, 2021.
+with Soft Sensors. Computers and Electrical Engineering, https://keremkargin.medium.com/ridge-regression-
+100. https://doi.org/10.1016/j.compeleceng.2022.107945 fundamentals-and-modeling-in-python-bb56f4301f62
+[15] de Vincentis, A., Pennazza, G., Santonico, M., [31] Arun Addagatla, “Regularization Techniques in
+Vespasiani-Gentilucci, U., Galati, G., Gallo, P., Vernile, C., Machine Learning - Arun Addagatla - Medium,” Medium,
+Pedone, C., Antonelli Incalzi, R., & Picardi, A. (2016). Apr. 20, 2021.
+Breath-print analysis by e-nose for classifying and https://arunaddagatla.medium.com/regularization-
+monitoring chronic liver disease: A proof-of-concept study. techniques-bbc0abfc5fe (accessed Aug. 25, 2024).
+Scientific Reports, 6. https://doi.org/10.1038/srep25337
+[16] IBM, “What is Overfitting? | IBM,” www.ibm.com,
+2024. https://www.ibm.com/topics/overfitting
+[17] Fi, M. O., & Garriga, G. C. (2010). Permutation Tests
+for Studying Classifier Performance Markus Ojala. In
+Journal of Machine Learning Research (Vol. 11).
+[18] “Bias and Variance in Machine Learning: An In Depth
+Explanation,” Simplilearn.com.
+Make sure to remove all placeholder and explanatory
+https://www.simplilearn.com/tutorials/machine-learning-
+text from the template when you add your own text.
+tutorial/bias-and-variance
+This text should not be here in
+[19] N. Pudjihartono, T. Fadason, A. W. Kempa-Liehr, and
+J. M. O’Sullivan, “A Review of Feature Selection Methods
