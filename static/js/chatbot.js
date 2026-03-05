@@ -46,7 +46,7 @@
 
     const bubble = document.createElement("div");
     bubble.className = "chat-bubble";
-    bubble.textContent = text;
+    bubble.innerHTML = text.replace(/\n/g, "<br>");
 
     row.appendChild(bubble);
     messages.appendChild(row);
