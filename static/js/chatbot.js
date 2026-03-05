@@ -8,12 +8,26 @@
 
   let thread = []; // simple in-memory chat history for this page load
 
+  // ---- First-message tracking (per-tab session) ----
+  const FIRST_MSG_KEY = "portfolio_chat_first_message_sent";
+
+  function isFirstMessage() {
+    return sessionStorage.getItem(FIRST_MSG_KEY) !== "true";
+  }
+
+  function markFirstMessageSent() {
+    sessionStorage.setItem(FIRST_MSG_KEY, "true");
+  }
+
   function openChat() {
     panel.classList.add("open");
     panel.setAttribute("aria-hidden", "false");
     input.focus();
+
+    // Optional: keep this friendly greeting bubble on first open
+    // (This is just UI text — NOT the AI's self-introduction)
     if (messages.childElementCount === 0) {
-      addBot("Hey — I’m Mick’s portfolio assistant. Want a quick rundown of the dissertation, projects, or experience?");
+      addBot("Hey — I’m Michael’s portfolio assistant. Want a quick rundown of the dissertation, projects, or experience?");
     }
   }
 
@@ -43,18 +57,26 @@
   function addBot(text) { addMsg("bot", text); }
 
   async function sendToServer(userText) {
+    const firstMessage = isFirstMessage();
+
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         message: userText,
-        history: thread.slice(-8) // keep it short
+        history: thread.slice(-8), // keep it short
+        firstMessage: firstMessage
       })
     });
 
     if (!res.ok) {
       const errText = await res.text();
       throw new Error(errText || `HTTP ${res.status}`);
+    }
+
+    // Only mark as sent once the server call succeeded
+    if (firstMessage) {
+      markFirstMessageSent();
     }
 
     return res.json();
@@ -84,6 +106,7 @@
     try {
       const data = await sendToServer(userText);
       typing.remove();
+
       addBot(data.reply || "No reply received.");
       thread.push({ role: "assistant", content: data.reply || "" });
     } catch (err) {
