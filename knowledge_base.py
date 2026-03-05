@@ -3,7 +3,7 @@ import faiss
 import threading
 from sentence_transformers import SentenceTransformer
 
-# Global variables (initially empty)
+# Globals
 model = None
 index = None
 documents = []
@@ -11,11 +11,15 @@ doc_sources = []
 _ready = False
 _lock = threading.Lock()
 
+# Ensure paths work both locally and on Render
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+KNOWLEDGE_DIR = os.path.join(BASE_DIR, "knowledge")
+
 
 def _initialize():
     """
-    Load model, documents, and build FAISS index.
-    Runs only once (lazy initialization).
+    Lazy-load the embedding model and build the FAISS index.
+    This prevents Render startup from timing out.
     """
     global model, index, documents, doc_sources, _ready
 
@@ -31,10 +35,12 @@ def _initialize():
         # Load embedding model
         model = SentenceTransformer("all-MiniLM-L6-v2")
 
-        knowledge_dir = "knowledge"
+        # Load documents
+        for filename in os.listdir(KNOWLEDGE_DIR):
+            path = os.path.join(KNOWLEDGE_DIR, filename)
 
-        for filename in os.listdir(knowledge_dir):
-            path = os.path.join(knowledge_dir, filename)
+            if not filename.endswith(".txt"):
+                continue
 
             with open(path, "r", encoding="utf-8") as f:
                 text = f.read()
@@ -42,18 +48,22 @@ def _initialize():
                 documents.append(text)
                 doc_sources.append(filename)
 
+        if not documents:
+            raise ValueError("No documents found in knowledge directory.")
+
         # Create embeddings
         embeddings = model.encode(documents)
 
-        # Build FAISS index
         dimension = len(embeddings[0])
+
+        # Build FAISS index
         idx = faiss.IndexFlatL2(dimension)
         idx.add(embeddings)
 
         index = idx
         _ready = True
 
-        print("Knowledge base ready.")
+        print("Knowledge base initialized successfully.")
 
 
 def search_docs(query, k=3):
