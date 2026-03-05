@@ -21,6 +21,7 @@
 
     <!-- Load external CSS from /static -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
 </head>
 
 <body>
@@ -455,5 +456,32 @@
         </div>
     </footer>
 </main>
+
+<!-- Chatbot Widget -->
+<button id="chatFab" class="chat-fab" aria-label="Open chat">💬</button>
+
+<div id="chatPanel" class="chat-panel" aria-hidden="true">
+  <div class="chat-header">
+    <div>
+      <div class="chat-title">Mick’s Portfolio Assistant</div>
+      <div class="chat-subtitle">Ask about projects, experience, or the dissertation.</div>
+    </div>
+    <button id="chatClose" class="chat-close" aria-label="Close chat">✕</button>
+  </div>
+
+  <div id="chatMessages" class="chat-messages"></div>
+
+  <form id="chatForm" class="chat-inputbar">
+    <input id="chatInput" class="chat-input" type="text" placeholder="Ask me anything…" autocomplete="off" />
+    <button class="btn btn-primary" type="submit">Send</button>
+  </form>
+
+  <div class="chat-footnote">
+    Please don’t enter sensitive info.
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+
 </body>
 </html>

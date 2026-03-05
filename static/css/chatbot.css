@@ -1,0 +1,109 @@
+.chat-fab{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  font-weight: 900;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.chat-panel{
+  position: fixed;
+  right: 18px;
+  bottom: 86px;
+  width: min(380px, calc(100vw - 36px));
+  height: 520px;
+  border-radius: var(--radiusLg);
+  background: var(--surface);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: none;
+  z-index: 9999;
+}
+
+.chat-panel.open{ display: flex; flex-direction: column; }
+
+.chat-header{
+  padding: 14px 14px;
+  border-bottom: 1px solid var(--border);
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.chat-title{ font-weight: 900; letter-spacing: -0.02em; }
+.chat-subtitle{ color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+
+.chat-close{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.6);
+  border-radius: 12px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.chat-messages{
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-row{ display:flex; }
+.chat-row.user{ justify-content: flex-end; }
+.chat-row.bot{ justify-content: flex-start; }
+
+.chat-bubble{
+  max-width: 82%;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.65);
+  color: var(--text);
+  font-weight: 650;
+}
+
+.chat-row.user .chat-bubble{
+  background: linear-gradient(135deg, rgba(37,99,235,0.18), rgba(124,58,237,0.14));
+}
+
+.chat-typing{ color: var(--muted); font-weight: 800; }
+
+.chat-inputbar{
+  display:flex;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid var(--border);
+  background: rgba(255,255,255,0.35);
+}
+
+.chat-input{
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 12px;
+  background: rgba(255,255,255,0.65);
+  outline: none;
+}
+
+.chat-footnote{
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  background: rgba(255,255,255,0.25);
+}
