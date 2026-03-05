@@ -1,34 +1,67 @@
 import os
 import faiss
+import threading
 from sentence_transformers import SentenceTransformer
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
-
+# Global variables (initially empty)
+model = None
+index = None
 documents = []
 doc_sources = []
+_ready = False
+_lock = threading.Lock()
 
-def load_documents():
-    knowledge_dir = "knowledge"
 
-    for filename in os.listdir(knowledge_dir):
-        path = os.path.join(knowledge_dir, filename)
+def _initialize():
+    """
+    Load model, documents, and build FAISS index.
+    Runs only once (lazy initialization).
+    """
+    global model, index, documents, doc_sources, _ready
 
-        with open(path, "r", encoding="utf-8") as f:
-            text = f.read()
+    if _ready:
+        return
 
-            documents.append(text)
-            doc_sources.append(filename)
+    with _lock:
+        if _ready:
+            return
 
-load_documents()
+        print("Initializing knowledge base...")
 
-embeddings = model.encode(documents)
+        # Load embedding model
+        model = SentenceTransformer("all-MiniLM-L6-v2")
 
-dimension = len(embeddings[0])
-index = faiss.IndexFlatL2(dimension)
-index.add(embeddings)
+        knowledge_dir = "knowledge"
+
+        for filename in os.listdir(knowledge_dir):
+            path = os.path.join(knowledge_dir, filename)
+
+            with open(path, "r", encoding="utf-8") as f:
+                text = f.read()
+
+                documents.append(text)
+                doc_sources.append(filename)
+
+        # Create embeddings
+        embeddings = model.encode(documents)
+
+        # Build FAISS index
+        dimension = len(embeddings[0])
+        idx = faiss.IndexFlatL2(dimension)
+        idx.add(embeddings)
+
+        index = idx
+        _ready = True
+
+        print("Knowledge base ready.")
 
 
 def search_docs(query, k=3):
+    """
+    Search knowledge base for relevant documents.
+    """
+    _initialize()
+
     query_embedding = model.encode([query])
 
     distances, indices = index.search(query_embedding, k)
